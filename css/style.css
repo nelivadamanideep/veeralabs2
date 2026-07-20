@@ -21,6 +21,10 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-padding-top: 90px;
+}
+
 body {
   margin: 0;
   font-family: Poppins, sans-serif;
@@ -432,6 +436,8 @@ h6,
 /* Sections */
 .section {
   padding: 1rem;
+  scroll-margin-top: 10px;
+  margin-top: -2rem;
 }
 
 .lead {
@@ -439,6 +445,7 @@ h6,
   max-width: 70ch;
   font-size: 20px;
   margin-bottom: 1rem;
+  margin-top: -0.5rem;
 }
 
 .grid {
@@ -457,7 +464,14 @@ h6,
 .section h2 {
   font-size: 30px;
   margin-bottom: 1rem;
-  margin-top: 0;
+  
+}
+
+.section p {
+  font-size: 20px;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  margin-top: -0.5rem;
 }
 
 .cta-panel h2 {
@@ -478,19 +492,35 @@ h6,
 }
 
 #formulation,
-#dosages,
-#team,
-#profile,
-#about p {
+#dosages {
   font-size: 20px;
+  
+}
+#formulation {
+  margin-top: 0.5rem;
+  margin-bottom: -5rem;
+}
+#formulation,#capacities {
+  scroll-margin-top: -120px;
+  margin-top: -3rem;
+}
+#vision h3 {
+  font-size: 25px;
+  margin-top: -0.1rem;
+  margin-left: 3px;
+}
+#vision p {
+ 
+  margin-left: 3px;
+}
+#vision, #company, #team {
+  margin-top: -4rem;
+  scroll-margin-top: -20px;
 }
 
-#about h3 {
-  font-size: 25px;
-}
 
 body {
-  
+  background-image: url("images1/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -552,10 +582,14 @@ body {
 .cta-full {
   background: #f7fbff;
   padding: 2.5rem 0;
+  margin-top: 2rem;
+  
 }
 
 .cta-inner {
-  text-align: center
+  text-align: center;
+  margin-bottom: -3rem;
+  margin-top: -2rem;
 }
 
 /* Footer */
@@ -568,6 +602,7 @@ body {
 
 .site-footer .col {
   text-align: left;
+  margin-bottom: -1.5rem;
 }
 
 .site-footer h5 {
@@ -925,7 +960,7 @@ h5 {
 }
 
 .lab-section {
-  background: white;
+  
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
