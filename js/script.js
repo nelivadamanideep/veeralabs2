@@ -13,6 +13,7 @@
     initSmoothScroll();
     initHeaderScroll();
     initDropdownKeyboard();
+    initHashNavigation();
   });
 
   // Mobile nav toggle (works for any page using .nav-toggle and .main-nav)
@@ -63,16 +64,50 @@
     });
   }
 
-  // Smooth scroll for same-page anchors
+  // Smooth scroll for in-page anchor links
   function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
         var href = anchor.getAttribute('href');
-        if (href.length > 1 && document.querySelector(href)) {
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (!href || href.indexOf('#') === -1) return;
+
+        var parts = href.split('#');
+        var page = parts[0];
+        var id = parts[1];
+
+        if (!id) return;
+
+        var currentPage = window.location.pathname.split('/').pop();
+        var targetPage = page ? page.split('/').pop() : '';
+        var isCurrentPage = !page || targetPage === currentPage;
+
+        if (!isCurrentPage) return;
+
+        var target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
+    });
+  }
+
+  function initHashNavigation() {
+    function scrollToHash(hash) {
+      if (!hash) return;
+      var target = document.getElementById(hash.replace(/^#/, ''));
+      if (!target) return;
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+
+    if (window.location.hash) {
+      scrollToHash(window.location.hash);
+    }
+
+    window.addEventListener('hashchange', function () {
+      scrollToHash(window.location.hash);
     });
   }
 
@@ -121,6 +156,7 @@
       });
     });
   }
+
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
